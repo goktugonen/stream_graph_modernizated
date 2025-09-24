@@ -65,7 +65,7 @@ with open("README.md", "r") as fh:
              if not (len(s) >= 2 and s[:2] == "[!")]) if i != 2)
 
 setup(name='stream_graph',
-      version='0.2.0',
+      version='1.0.0',
       description='A library for Stream Graphs',
       author='Yiannis Siglidis [LIP6]',
       author_email='Yiannis.Siglidis@lip6.fr',

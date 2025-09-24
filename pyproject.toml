@@ -1,0 +1,10 @@
+# c:\MyRepos\stream_graph_modernizated\pyproject.toml
+
+[build-system]
+requires = [
+    "setuptools>=64",
+    "wheel",
+    "cython>=0.29.0",
+    "numpy>=1.16.0"
+]
+build-backend = "setuptools.build_meta"
