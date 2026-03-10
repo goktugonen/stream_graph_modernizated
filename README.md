@@ -1,6 +1,6 @@
-# Stream-Graph: A Modernized Conda Environment (v1.0.0)
+**[Türkçe](README.tr.md) | [English](README.md)**
 
-**[Türkçe README için buraya tıklayın](README.tr.md)**
+# Stream-Graph: A Modernized Conda Environment (v1.0.0)
 
 [![Travis Status](https://travis-ci.org/ysig/stream_graph.svg?branch=master)](https://travis-ci.org/ysig/stream_graph)
 [![CircleCI Status](https://circleci.com/gh/ysig/stream_graph/tree/master.svg?style=shield)](https://circleci.com/gh/ysig/stream_graph/tree/master)

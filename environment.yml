@@ -6,16 +6,19 @@ dependencies:
   - python=3.7
   - cython
   - scipy
-  - bokeh=1.1.0
-  # Core data science libraries (already present but good to be explicit)
-  - numpy
-  - pandas
+  - setuptools
+  - wheel
+  - bokeh=1.1.0 # For tutorials
+  # --- CRITICAL PINS MENTIONED IN README ---
+  - pandas=0.24.2 # Required by stream_graph's old API
+  - jinja2=3.0.3  # Required to avoid ImportError: contextfilter
+  # Core data science libraries
+  - numpy # Version will be resolved by conda based on other dependencies
   - networkx
   # Libraries needed for tutorials and notebook execution
   - jupyter
   - ipykernel
   - matplotlib
   - wordcloud
+  - plotly=3.10.0
   - pip
-  - pip:
-    - dist/stream_graph-1.0.0-cp37-cp37m-win_amd64.whl

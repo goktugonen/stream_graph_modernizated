@@ -1,12 +1,19 @@
-# Stream-Graph: Modernleştirilmiş bir Conda Ortamı (v1.0.0)
+**[Türkçe](README.tr.md) | [English](README.md)**
 
-**[Click here for English README](README.md)**
+# Stream-Graph: Modernleştirilmiş bir Conda Ortamı (v1.0.0)
 
 [![Travis Status](https://travis-ci.org/ysig/stream_graph.svg?branch=master)](https://travis-ci.org/ysig/stream_graph)
 [![CircleCI Status](https://circleci.com/gh/ysig/stream_graph/tree/master.svg?style=shield)](https://circleci.com/gh/ysig/stream_graph/tree/master)
 [![Appveyor status](https://ci.appveyor.com/api/projects/status/kqwkk8khh6btkaep?svg=true)](https://ci.appveyor.com/project/ysig/stream-graph)
 
 > **Not:** Bu, orijinal `stream_graph` kütüphanesi için modernleştirilmiş ve yeniden üretilebilir (reproducible) bir Conda ortamı sağlayan çatallanmış (forked) bir depodur. Yukarıdaki derleme durumu rozetleri (build status badges) orijinal depoya aittir ve mevcut durumu yansıtmayabilir.
+
+### Orjinal Geliştiriciler
+
+Bu paket başlangıçta Odycceus projesi için Paris 6 Bilgisayar Bilimleri Laboratuvarı (LIP6) içinde karmaşık ağlar ekibinin araştırmacıları tarafından geliştirilmiştir.
+
+*   Yiannis Siglidis: `<Yiannis.Siglidis@lip6.fr>`
+*   Robin Lamarche-Perrin: `<Robin.Lamarche-Perrin@lip6.fr>`
 
 Bu proje, ilk olarak Yiannis Siglidis ve arkadaşları tarafından geliştirilen güçlü `stream_graph` kütüphanesini, modern Python ortamlarında çalışmasını engelleyen kritik bağımlılık (dependency) sorunlarını çözerek yeniden canlandırmaktadır. **v1.0.0** olarak yeniden paketlenen bu sürüm, kararlı ve kurulumu kolay bir Conda yapısı sunarak araştırmacıların ve geliştiricilerin zamansal ağ analizi (temporal network analysis) için bu kütüphaneden tekrar yararlanmasını sağlar.
 
@@ -18,7 +25,7 @@ Bir Stream Graph, düğümlerinin (nodes) ve bağlantılarının (links) zaman i
 
 *   **Stream graphs and link streams for the modeling of interactions in complex systems**  
     *Matthieu Latapy, Tiphaine Viard, Clémence Magnien.*  
-    [[arXiv:1710.04177]](https://arxiv.org/abs/1710.04177)
+    [[doi.org/10.1007/s13278-018-0537-7]](https://rdcu.be/eHZjL)
 
 Bu kütüphane, sosyal medyadaki iletişim dinamikleri gibi gelişen ağların (evolving networks) zamansal boyutunun analizi için tasarlanmıştır.
 ---
@@ -41,7 +48,6 @@ Bu projeyi kurmanın önerilen ve en kolay yolu Anaconda veya Miniconda dağıt�
 ### Ön Koşullar
 
 *   Anaconda or Miniconda
-*   `git` command-line tool
 *   `git` komut satırı aracı
 
 ### Adımlar
@@ -54,7 +60,14 @@ Bu projeyi kurmanın önerilen ve en kolay yolu Anaconda veya Miniconda dağıt�
     ```
     *(`YOUR_USERNAME` kısmını kendi GitHub kullanıcı adınızla değiştirin)*
 
-2.  **Conda Ortamını Oluşturun ve Aktifleştirin:**
+2.  **Kütüphaneyi Derleyin (Build the Library):**
+    `stream_graph` kütüphanesi C++ kodu içerdiği için, kuruluma başlamadan önce yerel olarak derlenmesi gerekir. Bu komut, kurulum için gerekli olan `.whl` dosyasını `dist/` klasörü içinde oluşturacaktır.
+    ```bash
+    python setup.py bdist_wheel
+    ```
+    *(Not: Bu adım için ana Conda ortamınızda `cython` ve `wheel` paketlerinin kurulu olması gerekebilir: `conda install cython wheel`)*
+
+3.  **Conda Ortamını Oluşturun ve Aktifleştirin:**
     Bu tek komut, `environment.yml` dosyasını okur ve tüm doğru kütüphane sürümleriyle birlikte `sg_env` adında yeni bir Conda ortamını otomatik olarak oluşturur.
     ```bash
     conda env create -f environment.yml
@@ -64,7 +77,7 @@ Bu projeyi kurmanın önerilen ve en kolay yolu Anaconda veya Miniconda dağıt�
     conda activate sg_env
     ```
 
-3.  **Kurulumu Doğrulayın:**
+4.  **Kurulumu Doğrulayın:**
     Komut satırınızın başında artık `(sg_env)` ön eki görünmelidir. Projeyi çalıştırmaya hazırsınız.
 
 ## Kullanım: Öğreticiyi (Tutorial) Çalıştırma
@@ -74,12 +87,17 @@ Depo, kütüphanenin temel işlevlerini gösteren ODYCCEUS yaz okulundan orijina
 1.  **Jupyter Notebook'u Başlatın:**
     `sg_env` ortamı aktifken, proje dizinine gidin ve Jupyter'i başlatın:
     ```bash
+    # Ortamı Jupyter'a bir kerelik tanıtma (gerekliyse)
+    python -m ipykernel install --user --name sg_env --display-name "Python (sg_env)"
+    
+    # Jupyter'i başlat
+    ```bash
     jupyter notebook
     ```
 
 2.  **Notebook'u Açın:**
-    Web tarayıcınızda yeni bir sekme açılacaktır. `tutorials/ODYCCEUS/` dizinine gidin ve `tutorial.ipynb` notebook'unu açın.
-g
+    Web tarayıcınızda yeni bir sekme açılacaktır. `tutorials/ODYCCEUS/` dizinine gidin, `tutorial.ipynb` notebook'unu açın ve kernel olarak **"Python (sg_env)"** seçeneğini belirleyin.
+
 3.  **Analizi Çalıştırın:**
     Orijinal analizi tekrarlamak için artık notebook'taki hücreleri (cells) çalıştırabilirsiniz.
 
@@ -96,20 +114,20 @@ g
 Bu kütüphaneyi araştırmalarınızda kullanırsanız, lütfen orijinal makaleye atıfta bulunun:
 ```bibtex
 @article{latapy2018stream,
-  title={Stream graphs and link streams for the modeling of interactions in complex systems},
-}
+  title={Stream graphs and link streams for the modeling of interactions over time},
+  author={Latapy, Matthieu and Viard, Tiphaine and Magnien, Cl{\'e}mence},
+  journal={Social Network Analysis and Mining},
+  volume={8},
+  number={1},
+  pages={61},
+  year={2018},
+  publisher={Springer}
+} 
 ```
-
-### Orjinal Geliştiriciler
-
-Bu paket başlangıçta Odycceus projesi için Paris 6 Bilgisayar Bilimleri Laboratuvarı (LIP6) içinde karmaşık ağlar ekibinin araştırmacıları tarafından geliştirilmiştir.
-
-*   Yiannis Siglidis: `<Yiannis.Siglidis@lip6.fr>`
-*   Robin Lamarche-Perrin: `<Robin.Lamarche-Perrin@lip6.fr>`
 
 ### Modernizasyon Yaması
 
-Bu paketin V1.0.0 sürümü kapsamında 2025 yılı itibariyle kütüphane yeniden kullanılabilir hale getirilmiştir.
+Bu paketin V1.0.0 sürümü kapsamında kütüphane yeniden kullanılabilir hale getirilmiştir.
 
 *   Talha Göktuğ Gönen `<talhagoktug.gonen@nisantasi.edu.tr>`
 

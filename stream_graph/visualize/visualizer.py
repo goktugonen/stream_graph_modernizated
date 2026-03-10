@@ -1,7 +1,7 @@
 from stream_graph import ABC
 from stream_graph import StreamGraph
 from math import tanh, sqrt
-from collections import Iterable
+from collections.abc import Iterable
 import numpy as np
 
 

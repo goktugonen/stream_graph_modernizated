@@ -623,13 +623,13 @@ class StreamGraph(object):
             A list of the created bins.
 
         """
-        if self.discrete:
+        if not self.discrete:
             timeset, bins = self.timeset_.discretize(bins, bin_size)
             tns, _ = self.temporal_nodeset_.discretize(bins=bins)
             tls, _ = self.temporal_linkset_.discretize(bins=bins)
             return self.__class__(self.nodeset, timeset, tns, tls), bins
         else:
-            warn('Stream-Graph is already discrete')
+            warn('Stream-Graph is already discrete. Returning a copy.')
             return self
 
     @property

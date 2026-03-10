@@ -59,7 +59,6 @@ class TemporalLinkSetDF(ABC.TemporalLinkSet):
 
     """
     def __init__(self, df=None, disjoint_intervals=True, sort_by=None, discrete=None, weighted=False, default_closed=None, merge_function=None, operation_functions=None):
-        if isinstance(df, self.__class__):
             if bool(df):
                 self.df_, self.discrete_, self.weighted_, self.sort_by, self.algebra = df.df, df.discrete, df.weighted, df.sort_by, df.algebra
         elif df is not None:
@@ -695,6 +694,6 @@ class TemporalLinkSetDF(ABC.TemporalLinkSet):
             return set()
 
     # Make cliques for intervals?
-    def _to_discrete(self, bins, bin_size):
+    def discretize(self, bins, bin_size):
         df, bins = time_discretizer_df(self.df, bins, bin_size, columns=['ts', 'tf'])
         return self.__class__(df, disjoint_intervals=False, discrete=True), bins

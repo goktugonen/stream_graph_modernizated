@@ -435,6 +435,6 @@ class TemporalNodeSetDF(ABC.TemporalNodeSet):
         else:
             return self.__class__()
 
-    def _to_discrete(self, bins, bin_size):
+    def discretize(self, bins, bin_size):
         df, bins = time_discretizer_df(self.df, bins, bin_size, columns=['ts', 'tf'])
         return self.__class__(df, disjoint_intervals=False, discrete=True), bins
